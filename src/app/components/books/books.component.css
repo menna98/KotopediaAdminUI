@@ -1,0 +1,136 @@
+.bookHeader{
+    background-color: var(--color4);
+    color: var(--color1);
+    border-radius: 10px;
+}
+
+.bookHeader h6{
+display: inline-block;
+}
+
+.getBook{
+    width: 95%;
+    margin-top: 3%;
+}
+
+.bookContent{
+    color: var(--color1);
+}
+
+.bookContent img{
+    margin: 2% 0px;
+    width: 150px;
+    height: 200px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.book{
+    margin-top: 2%;
+}
+
+.btns button{
+    /* background-color: var(--color1);
+    color: var(--color4); */
+    /* font-weight: bold; */
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 0px;
+    padding: 5px 0px;
+    margin: 1% 0px;
+    width: 30%;
+}
+
+.search input{
+    border-radius: 10px;
+    border: none;
+    padding: 1%;
+    width: 100%;
+
+}
+
+.search input:focus{
+    outline: none;
+    border: 3px solid;
+    border-color: var(--color1);
+}
+
+.search{
+    position: relative;
+}
+
+.iconSearch{
+    position: absolute;
+    font-size: 20px;
+    right: 35px;
+    top: 7px;
+}
+
+.iconSearch:hover{
+  cursor: pointer;
+}
+
+.data{
+    /* margin-top: 2%; */
+    color: var(--color1);
+}
+.data img{
+    width: 100px;
+    height: 150px;
+}
+.data thead{
+    background-color: var(--color4);
+    border-bottom: 2px solid var(--color1);
+    margin-top: 2%;
+    height: 50px;
+}
+
+.data .id{
+    display: block;
+}
+.data input{
+    border: none;
+    text-align: center;
+    outline: none;
+    display: none;
+}
+/* form */
+/* .bootstrapButton{
+  background-color: var(--color1);
+  border-color: var(--color1);
+  color: var(--color4);
+} */
+
+#AddModalButton{
+  color: white;
+}
+
+::ng-deep .cdk-overlay-container {
+    position: fixed;
+    z-index: 2000;
+}
+.modal-content{
+  background-color: var(--color4);
+
+}
+/* button#Mbtn,
+button#Sbtn{
+  background-color: var(--color1);
+  color: white;
+} */
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: var(--color1);
+  text-align: center;
+  border-radius: 5px;
+  color: var(--color4);
+  padding: 1%;
+}
+
+.my-pagination ::ng-deep .ngx-pagination  {
+  text-align: center;
+  border-radius: 10px;
+  padding: 1%;
+  margin: auto;
+}
+

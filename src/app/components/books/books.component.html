@@ -1,0 +1,187 @@
+
+<div class="container getBook">
+    <!------------Books Header-------------------------->
+    <div class="row bookHeader justify-content-around text-center align-items-center">
+        <h1 class="col-2">Books</h1>
+        <div class="col-md-5  search">
+          <input #search type="search" placeholder="Search by category">
+          <i  class="fa-solid fa-magnifying-glass iconSearch" (click)="getBooks(search.value)"></i>
+        </div>
+        <div class="row col-md-5 col-12 text-center justify-content-around">
+          <div class="col-md-5 col-12 text-center ">
+              <button type="button" class="btn btn-success my-3 bootstrapButton" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"><i class="fa-solid fa-plus"></i> Add Book</button>
+          </div>
+          <div class="col-md-5 col-12 ">
+              <button type="button" (click)="deleteAll()" class="btn btn-danger my-3 bootstrapButton"><i class="fa fa-duotone fa-trash"></i> Delete All</button>
+          </div>
+      </div>
+
+    </div>
+<!-- Add Book Modal -->
+    <div class="col-md-2 col-12 add" id="cont">
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header ">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Book</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <label for="message-text" class="col-form-label">Please Enter Book Details:</label>
+              <!-- Adding form  -->
+              <form [formGroup]="AddingForm" (ngSubmit)="AddOne()">
+                <div class="mb-3">
+                  <div>
+                    <mat-form-field appearance="outline" class="w-100 py-1">
+                      <mat-label>Book title</mat-label>
+                      <input matInput placeholder="Title" formControlName="title">
+                      <mat-error *ngIf="titleValid">{{titleValid}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Category</mat-label>
+                      <mat-select formControlName="category">
+                        <mat-option style="z-index: 2000;" *ngFor="let c of category" [value]="c.value">
+                          {{c.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline" class="w-100 py-1">
+                      <mat-label>unitPrice</mat-label>
+                      <input matInput placeholder="00.00 EGP" formControlName="unitPrice">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline" class="w-100 py-1">
+                      <mat-label>description: </mat-label>
+                      <input matInput placeholder="description"formControlName="description" >
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline" class="w-100 py-1">
+                      <mat-label>author: </mat-label>
+                      <input matInput placeholder="author" formControlName="author" >
+                      <mat-error *ngIf="titleValid">{{authorValid}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="text-center my-2">
+                    <div class="text-start my-1">Book photo</div>
+                    <input class="form-control" type="file" accept="image/png, image/gif, image/jpeg" (change)="getPhoto($event)" formControlName="photo">
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button  class="btn btn-dark" data-bs-dismiss="modal" id="Sbtn">Close</button>
+                  <button data-bs-dismiss="modal" class="btn btn-success"  id="">Add</button>
+
+                </div>
+              </form>
+              <!-- form end -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------End Books Header-------- ------------------>
+    <!------------BookContent------------------------------->
+      <div *ngFor="let product of Products | paginate:{itemsPerPage:tablesize,currentPage:page,totalItems:count}; let i = index" class="row bookContent justify-content-around align-items-center">
+        <img class="col-md-3 col-12" src={{product.photo}} alt="....">
+        <div class="col-md-9 col-12 book">
+            <h5><b>{{product.title}}</b></h5>
+            <h6><b>Book ID :</b> {{product._id}}</h6>
+            <h6><b>Category :</b> {{product.category}}</h6>
+            <h6><b>Author :</b> {{product.author}}</h6>
+            <h6><b>Price :</b> {{product.unitPrice}}</h6>
+            <p><b>Description :</b> {{product.description}}</p>
+            <div class="row justify-content-around btns mb-2">
+                <button class="col-md-5 col-12 btn btn-dark" data-bs-toggle="modal" data-bs-target="#updateModal" (click)="updateBookInfo(product)">Edit</button>
+                <button class="col-md-5 col-12 btn btn-danger" (click)="deleteBookById(product._id)">Delete</button>
+            </div>
+        </div>
+
+
+        <hr/>
+        <!-- Update book info modal -->
+        <div class="col-md-2 col-12 add" id="cont">
+          <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header ">
+                  <h1 class="modal-title fs-5" id="updateModalLabel">Update Book</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <label for="message-text" class="col-form-label">Please Enter Book Details:</label>
+                  <!-- Adding form  -->
+                  <form [formGroup]="UpdatingForm" (ngSubmit)="updateOne()">
+                    <div class="mb-3">
+                      <div>
+                        <mat-form-field appearance="outline" class="w-100 py-1">
+                          <mat-label>Book title</mat-label>
+                          <input matInput placeholder="Title" formControlName="title">
+                          <mat-error *ngIf="titleValid">{{titleValid}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div>
+                        <mat-form-field appearance="fill" class="w-100">
+                          <mat-label>Category</mat-label>
+                          <mat-select formControlName="category">
+                            <mat-option style="z-index: 2000;" *ngFor="let c of category" [value]="c.value">
+                              {{c.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div>
+                        <mat-form-field appearance="outline" class="w-100 py-1">
+                          <mat-label>unitPrice</mat-label>
+                          <input matInput placeholder="00.00 EGP" formControlName="unitPrice">
+                        </mat-form-field>
+                      </div>
+                      <div>
+                        <mat-form-field appearance="outline" class="w-100 py-1">
+                          <mat-label>description: </mat-label>
+                          <input matInput placeholder="description"formControlName="description" >
+                        </mat-form-field>
+                      </div>
+                      <div>
+                        <mat-form-field appearance="outline" class="w-100 py-1">
+                          <mat-label>author: </mat-label>
+                          <input matInput placeholder="author" formControlName="author" >
+                          <mat-error *ngIf="titleValid">{{authorValid}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="text-center my-2">
+                        <div class="text-start my-1">Book photo</div>
+                        <input class="form-control" type="file" (change)="getPhoto($event)" formControlName="photo">
+                      </div>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-dark" data-bs-dismiss="modal" id="Sbtn">Close</button>
+                      <button data-bs-dismiss="modal" class="btn btn-success" id="Mbtn">Update</button>
+                    </div>
+                  </form>
+                  <!-- form end -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="my-pagination">
+        <pagination-controls
+        previosLabel="Pre"
+        nextLable="Next"
+        (pageChange)="onTableDataChange($event,search.value)">
+
+        </pagination-controls>
+      </div>
+</div>
+
+

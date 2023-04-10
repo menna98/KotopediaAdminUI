@@ -1,0 +1,107 @@
+.orderHeader{
+    background-color: var(--color4);
+    color: var(--color1);
+    border-radius: 10px;
+
+}
+.getOrder{
+    width: 95%;
+    margin-top: 3%;
+
+}
+.search input{
+    border-radius: 10px;
+    border: none;
+    padding: 1%;
+    width: 100%;
+
+}
+.search input:focus{
+    outline: none;
+    border: 3px solid;
+    border-color: var(--color1);
+}
+.search{
+    position: relative;
+}
+.iconSearch{
+    position: absolute;
+    font-size: 20px;
+    right: 35px;
+    top: 8px;
+}
+.iconSearch:hover{
+  cursor: pointer;
+}
+
+
+
+
+
+/*  */
+
+.eachOrder{
+
+  border-radius: 10px;
+  padding: 20px;
+  height: fit-content;
+  background-color: var(--color4);
+  box-shadow: 3px 3px 5px var(--color3);
+}
+mat-select{
+
+  background-color: transform;
+}
+
+mat-form-field{
+  margin-top: 1%;
+  border-radius: 10px;
+}
+.allOrders button{
+  color: var(--color4);
+  background-color: var(--color1);
+  border: 0px;
+  margin-top: 1%;
+}
+ h6 {
+  margin-top: 5%;
+  color: var(--color1);
+
+}
+
+table{
+  border: 1px solid var(--color1);
+  width: 100%;
+  color: var(--color1);
+}
+
+.tableRow{
+  border: 1px solid var(--color1);
+
+}
+
+.tableCell{
+  border: 1px solid var(--color1);
+
+
+}
+tr td img{
+  width: 80px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: var(--color1);
+  text-align: center;
+  border-radius: 5px;
+  color: var(--color4);
+  padding: 1%;
+}
+
+.my-pagination ::ng-deep .ngx-pagination  {
+  text-align: center;
+  border-radius: 10px;
+  padding: 1%;
+  margin: auto;
+}

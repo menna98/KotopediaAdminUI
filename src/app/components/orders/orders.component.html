@@ -1,0 +1,64 @@
+<div class="container getOrder">
+  <!------------Order Header-------------------------->
+  <div class="row orderHeader py-3 mb-3 justify-content-around text-between align-items-center">
+    <h1 class="col-3">Orders</h1>
+    <div class="col-md-6  search">
+      <input #input type="search" placeholder="Search by status">
+      <i (click)="search(input.value)" class="fa-solid fa-magnifying-glass iconSearch"></i>
+    </div>
+  </div>
+  <!------------End Order Header-------------------------->
+  <!------------OrderContent------------------------------->
+  <div class="row allOrders justify-content-around text-center align-items-center">
+    <div *ngFor="let order of Orders | paginate:{itemsPerPage:tablesize,currentPage:page,totalItems:count}; let i = index" class="col-12 col-sm-10 col-md-8 mx-2 eachOrder justify-content-around align-items-center my-3">
+      <div class="row">
+        <div class="col-lg-6 col-12 text-start list">
+          <h6><b>User Email : </b> {{order.email}}</h6>
+          <h6><b>Order ID : </b> {{order._id}}</h6>
+          <h6><b>Order Date : </b> {{order.date}}</h6>
+          <h6><b>Total Price : </b> {{order.totalPrice}}</h6>
+          <h6><b>Order Status : </b>
+            <mat-form-field *ngIf="!spanCondition" appearance="outline" class="w-75">
+              <mat-label>Order Status</mat-label>
+              <mat-select (valueChange)="updateStatus(order._id,$event)">
+                <mat-option style="z-index: 2000;" *ngFor="let s of statusOptions" [value]="s.value">
+                  {{s.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <span *ngIf="spanCondition">{{order.status}}</span>
+            <button class="editBtn rounded-pill ms-3" (click)="editBtn(order.status)"><i class="fa-solid fa-pen-to-square"></i></button>
+          </h6>
+        </div>
+        <div class="col-lg-6 col-12">
+          <table>
+            <thead>
+              <tr>
+                <th class="tableCell">Cover Image</th>
+                <th class="tableCell">Book Title</th>
+                <th class="tableCell">Quantity Ordered</th>
+                <th class="tableCell">Unit Price (EGP)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let book of order.productsInOrder" class="tableRow">
+                <td class="tableCell"><img src="{{book.photo}}"></td>
+                <td class="tableCell">{{book.title}}</td>
+                <td class="tableCell">{{book.quantity}}</td>
+                <td class="tableCell">{{book.unitPrice}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div>
+      <pagination-controls class="my-pagination"
+      previosLabel="Pre"
+      nextLable="Next"
+      (pageChange)="onTableDataChange($event,input.value)">
+
+      </pagination-controls>
+    </div>
+
+  </div>

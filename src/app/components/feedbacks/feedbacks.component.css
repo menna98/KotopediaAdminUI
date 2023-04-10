@@ -1,0 +1,95 @@
+.main{
+  margin-top: 38px;
+}
+
+.customerHeader{
+  background-color: var(--color4);
+  color: var(--color1);
+  padding: 1% 0px;
+  border-bottom: 1px solid var(--color1);
+  border-radius: 10px;
+
+}
+.getCustomer{
+  width: 95%;
+  margin-top: 3%;
+
+}
+.customer{
+  background-color: var(--color4);
+  padding: 2%;
+  align-items: center;
+  margin: 1% 0px;
+  color: var(--color1);
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 5px 8px var(--color3);
+  box-shadow: 3px 3px 5px var(--color3);
+
+}
+
+.customerContent img{
+  height: 90px;
+  width: 90px;
+  border-radius: 50% 50%;
+}
+
+.search input{
+  border-radius: 10px;
+  border: none;
+  padding: 1%;
+  width: 100%;
+
+}
+
+.search input:focus{
+  outline: none;
+  border: 3px solid;
+  border-color: var(--color1);
+}
+
+.search{
+  position: relative;
+}
+
+.iconSearch{
+  position: absolute;
+  font-size: 20px;
+  right: 35px;
+  top: 7px;
+}
+
+.customer button{
+  background-color: var(--color1);
+  color: var(--color4);
+  padding: 2% 0px;
+  border: 0px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.iconSearch:hover{
+  cursor: pointer;
+}
+h5{
+  color: var(--color1);
+}
+h5 span{
+  color: var(--color2);
+    word-wrap: break-word;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: var(--color1);
+  text-align: center;
+  border-radius: 5px;
+  color: var(--color4);
+  padding: 1%;
+}
+
+.my-pagination ::ng-deep .ngx-pagination  {
+  text-align: center;
+  border-radius: 10px;
+  padding: 1%;
+  margin: auto;
+}

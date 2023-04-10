@@ -1,0 +1,8 @@
+<div class="spinner-grow" role="status" *ngIf="loader">
+  <span class="sr-only">Loading...</span>
+</div>
+
+<div  *ngIf="!loader">
+<app-admin></app-admin>
+<router-outlet></router-outlet>
+</div>

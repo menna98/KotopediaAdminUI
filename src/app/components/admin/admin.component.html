@@ -1,0 +1,71 @@
+<div class="dashboard">
+  <h1>Kotopedia Dashboard</h1>
+  <button class="logout rounded-pill py-1 px-3" (click)="logout()">Log Out  <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+</div>
+
+<!-- <div class="spinner-grow" style="color: var(--color1); width: 3rem; height: 3rem;" role="status" *ngIf="loader">
+  <span class="sr-only">Loading...</span>
+</div> -->
+
+  <div class="container">
+    <div class="row justify-content-around">
+    <iframe class="col-md-6 col-12" src="https://charts.mongodb.com/charts-project-0-fdvqu/embed/charts?id=63fc9441-d57f-4cdd-8a04-6ba177ea286c&maxDataAge=1800&theme=light&autoRefresh=true"></iframe>
+    <iframe class="col-md-6 col-12" src="https://charts.mongodb.com/charts-project-0-fdvqu/embed/charts?id=63fca07c-d57f-43b9-83fe-6ba177f159b1&maxDataAge=1800&theme=light&autoRefresh=true"></iframe>
+  </div>
+    <div class="row justify-content-around">
+    <iframe class="col-md-6 col-12" src="https://charts.mongodb.com/charts-project-0-fdvqu/embed/charts?id=63fce5cc-e364-437a-80d6-c2caeeeeef14&maxDataAge=1800&theme=light&autoRefresh=true"></iframe>
+    <iframe class="col-md-6 col-12" src="https://charts.mongodb.com/charts-project-0-fdvqu/embed/charts?id=63fce91c-b417-4ac3-8dbd-aafbc41081df&maxDataAge=1800&theme=light&autoRefresh=true"></iframe>
+  </div>
+  </div>
+
+  <div class="container con">
+    <div class="row justify-content-around rows ">
+      <div class="col-lg-3 col-8  Books">
+        <h1>Books</h1>
+        <hr />
+        <ul>
+          <li>Get all books</li>
+          <li>Add books</li>
+          <li>Edit books</li>
+          <li>Delete books</li>
+        </ul>
+        <button routerLink="/books">Go to Books</button>
+
+      </div>
+
+      <div class="col-lg-3 col-8 Customers ">
+        <h1>Customers</h1>
+        <hr />
+        <ul>
+          <li>Get all customers</li>
+          <li>search for a customer</li>
+          <li>Delete books</li>
+        </ul>
+        <button routerLink="/customers">Go to Customers</button>
+      </div>
+
+      <div class="col-lg-3 col-8 Orders ">
+        <h1>Orders</h1>
+        <hr />
+        <ul>
+          <li>Get all orders</li>
+          <li>ُEdit order status</li>
+
+
+        </ul>
+        <button routerLink="/orders">Go to Orders</button>
+      </div>
+
+      <div class="col-lg-3 col-8 feedbacks ">
+        <h1>Feedbacks</h1>
+        <hr />
+        <ul>
+          <li>Get all feedbacks</li>
+
+        </ul>
+        <button routerLink="/feedbacks">Go to Feedbacks</button>
+      </div>
+    </div>
+  </div>
+
+

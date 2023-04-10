@@ -1,0 +1,36 @@
+<div class="container getCustomer">
+  <!------------Customer Header-------------------------->
+  <div class="row customerHeader justify-content-around align-items-center text-center">
+    <h1 class="col-md-3 col-12">Customers</h1>
+    <div class="col-md-5 col-12 search">
+      <input #search class="" type="search" placeholder="Search by email">
+      <i class="fa-solid fa-magnifying-glass iconSearch" (click)="getOne(search.value)"></i>
+    </div>
+
+  </div>
+  <!------------End Customers Header-------------------------->
+  <!------------CustomerContent------------------------------->
+  <div class="row customerContent justify-content-around">
+    <div *ngFor="let user of users | paginate:{itemsPerPage:tablesize,currentPage:page,totalItems:count}; let i = index" class="col-md-4 col-12 customer">
+      <div class="row">
+        <img class="col-md-4 col-12" src="{{user.photo}}">
+        <div class="col-md-8 col-12 userinfo">
+          <h5>{{user.email}}</h5>
+          <h6>{{user._id}}</h6>
+          <h6>{{user.name}}</h6>
+          <p>{{user.gender}}</p>
+          <button class="btn btn-danger" (click)="deleteOne(user._id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <pagination-controls class="my-pagination"
+    previosLabel="Pre"
+    nextLable="Next"
+    (pageChange)="onTableDataChange($event,search.value)">
+
+    </pagination-controls>
+  </div>
+</div>
