@@ -27,7 +27,7 @@ export class AdminComponent {
         text: 'Unauthorized access! Invalid token!',
         timer: 2000
       })
-      //this.logout();
+      this.logout();
     }
   }
 
